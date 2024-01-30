@@ -2,14 +2,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}{% endblock %} | Nordic Homes</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <nav class="border-b border-gray-300">
         <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
             <div class="menu-left flex items-center space-x-6">
-                <a href="#" class="py-4 text-lg text-purple-500 font-semibold">Nordic Homes</a>
+                <a href="{% url 'frontpage' %}" class="py-4 text-lg text-purple-500 font-semibold">Nordic Homes</a>
                 <ul class="flex items-center space-x-4">
                     <li><a href="{% url 'shop' %}" class="py-4 text-lg text-black hover:text-purple-500 font-semibold">Shop</a></li>
                     <li><a href="#" class="py-4 text-lg text-black hover:text-purple-500 font-semibold">About</a></li>
@@ -25,7 +25,7 @@
                 </ul>
             </div>
             <div class="menu-rigth flex items-center space-x-4">
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <a href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                   </svg>
                 </a>
