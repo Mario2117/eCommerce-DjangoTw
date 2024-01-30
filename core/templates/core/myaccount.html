@@ -17,56 +17,39 @@
     <hr>
 
     <h2 class="my-6 text-xl">My orders</h2>
-
-    <div class="w-full mb-6 p-6 flex flex-wrap bg-gray-100 rounded-xl">
-        <div class="mb-6 flex justify-between">
-            <a href="#">Order id: 1</a>
-        </div>
-
-        <div class="mb-6 w-full">
-            <div class="product mb-6 flex pr-6">
-                <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="" alt="">
-                </a>
-
-                <div class="w-3/4 pl-6">
-                    <div class="flex justify-between">
-                        <a href="#" class="text-lg">Product Name</a>
-                        <p class="mb-6 pt-1 text-gray-500">$9.99</p>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="mt-6">
-                    Quantity: 1
-                </div>
+    {% for order in request.user.orders.all %}
+        <div class="w-full mb-6 p-6 flex flex-wrap bg-gray-100 rounded-xl">
+            <div class="mb-6 flex justify-between">
+                <a href="#">Order id: {{order.id }}</a>
             </div>
+
             <div class="mb-6 w-full">
-                <div class="product mb-6 flex pr-6">
-                    <a href="#" class="w-1/4">
-                        <img class="hover:shadow-lg rounded-xl" src="" alt="">
-                    </a>
-    
-                    <div class="w-3/4 pl-6">
-                        <div class="flex justify-between">
-                            <a href="#" class="text-lg">Product Name</a>
-                            <p class="mb-6 pt-1 text-gray-500">$9.99</p>
+                {% for item in order.items.all %}
+                    <div class="product mb-6 flex pr-6">
+                        <a href="#" class="w-1/4">
+                            <img class="hover:shadow-lg rounded-xl" src="{{ item.product.get_thumbnail }}" alt="">
+                        </a>
+
+                        <div class="w-3/4 pl-6">
+                            <div class="flex justify-between">
+                                <a href="#" class="text-lg">{{ item.product.name }}</a>
+                                <p class="mb-6 pt-1 text-gray-500">$9.99</p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="mt-6">
+                            Quantity: {{ item.quantity }}
                         </div>
                     </div>
-    
-                    <hr>
-    
-                    <div class="mt-6">
-                        Quantity: 1
-                    </div>
-                </div>
+                {% endfor %}
+            </div>
+            <div>
+                <p class="text-lg"> Date: {{ order.created_at }}</p>
+                <p class="text-lg"> Total:$190</p>
             </div>
         </div>
-        <div>
-            <p class="text-lg"> Date: 04.04.2024</p>
-            <p class="text-lg"> Total:$190</p>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}
